@@ -1,0 +1,8 @@
+[<actor> Player] ->
+[PlayerMovement|
+
+[<input> Input] -> [Jump] -> [Double Jump]
+[Input] -> [Move] -> [Sprint]
+[Input] -> [Slide]
+[Jump] -> [Wall Run]
+]
