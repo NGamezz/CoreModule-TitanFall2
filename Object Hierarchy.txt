@@ -1,22 +1,44 @@
 [<actor id=player>Attack;Player]
-[player]-[Running]
-[player]-[Jump]
-[player]-[Standing Still]
+[Movement]-[Running]
+[Movement]-[Jump]
+[Movement]-[Standing Still]
 
-[player]-[Shoot]
-[player]-[Running]
+[player]-[Input]
 
+[Input]-[Switch Weapon]
+[Input]-[Reload]
+[Input]-[Aim Down Sights]
+[Input]-[Movement]
+[Input]-[Atk]
+
+///reloading
+[Reload]-[More bullets]
+
+//switching weapons
+[Switch Weapon]-[Pistol]-[Shoot]
+[Switch Weapon]-[Melee]-[Swing]
+[Switch Weapon]-[RPG]-[Shoot]
+
+
+//ADS
+[Aim Down Sights]->[Zoom View]->[Enhanced accuracy]
+
+//attacking
+[Atk]->[Swing]->[Damage enemies]
+[Atk]->[Shoot]->[Damage enemies]
+
+//movement
+[Movement]<->[Atk]
+
+//Running
 [Running]->[Swing Melee ATK]
 [Swing Melee ATK]->[Damage enemies]
-[Running]->[Shoot]
-[Swing]->[Damage enemies]
-[Shoot]->[Damage enemies]
+//[Running]->[Shoot]
 
-[Standing Still]-[Shoot]
-[Standing Still]-[Swing]
 
+//Jumping
 [Jump]->[Ground Slam]
 [Jump]->[Less accuracy]
 [Ground Slam]->[Damage enemies]
-[player]<->[Rocket Jump] -> [Damage taken]
+[Movement]<->[Rocket Jump] -> [Damage taken]
 [Rocket Jump] -> [Higher Jump]
