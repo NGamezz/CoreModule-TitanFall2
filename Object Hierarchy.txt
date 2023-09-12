@@ -1,0 +1,22 @@
+[<actor id=player>Attack;Player]
+[player]-[Running]
+[player]-[Jump]
+[player]-[Standing Still]
+
+[player]-[Shoot]
+[player]-[Running]
+
+[Running]->[Swing Melee ATK]
+[Swing Melee ATK]->[Damage enemies]
+[Running]->[Shoot]
+[Swing]->[Damage enemies]
+[Shoot]->[Damage enemies]
+
+[Standing Still]-[Shoot]
+[Standing Still]-[Swing]
+
+[Jump]->[Ground Slam]
+[Jump]->[Less accuracy]
+[Ground Slam]->[Damage enemies]
+[player]<->[Rocket Jump] -> [Damage taken]
+[Rocket Jump] -> [Higher Jump]
