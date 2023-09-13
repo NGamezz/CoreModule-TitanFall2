@@ -1,41 +1,48 @@
 //code van Adam
-[<actor id=player>Attack;Player]
-[Movement]-[Running]
-[Movement]-[Jump]
-[Movement]-[Standing Still]
+[<actor id=playerA>Attack;Player]
 
+//input
 [player]-[Input]
 
-[Input]-[Switch Weapon]
 [Input]-[Reload]
 [Input]-[Aim Down Sights]
 [Input]-[Movement]
 [Input]-[Atk]
+[Input]-[Switch Weapon]
 
+[Reload|
 ///reloading
 [Reload]-[More bullets]
-
-//switching weapons
-[Switch Weapon]-[Pistol]-[Shoot]
-[Switch Weapon]-[Melee]-[Swing]
-[Switch Weapon]-[RPG]-[Shoot]
-
-
+]
+[Aim Down Sights|
 //ADS
 [Aim Down Sights]->[Zoom View]->[Enhanced accuracy]
-
+]
+[Atk|
 //attacking
-[Atk]->[Swing]->[Damage enemies]
-[Atk]->[Shoot]->[Damage enemies]
+[Atk]->[Swing]
+[Atk]-[Ground Slam]
+[Atk]->[Shoot]
+] -> [Damage enemies]
+
+
+
+[Switch Weapon|
+//switching weapons
+[Switch Weapon]-[Pistol]-[Shoot]
+[Switch Weapon]-[RPG]-[Shoot]
+[Switch Weapon]-[Melee]-[Swing]
+] -> [Damage enemies]
 
 //movement
-[Movement]<->[Atk]
+[Movement|
+[Movement]-[Jump]
+
+//standing still
+[Movement]-[Standing Still]-[More Accuracy]
 
 //Running
-[Running]->[Swing Melee ATK]
-[Swing Melee ATK]->[Damage enemies]
-//[Running]->[Shoot]
-
+[Movement]-[Running]-[Place In WorldSpace]
 
 //Jumping
 [Jump]->[Ground Slam]
@@ -43,10 +50,11 @@
 [Ground Slam]->[Damage enemies]
 [Movement]<->[Rocket Jump] -> [Damage taken]
 [Rocket Jump] -> [Higher Jump]
+]
 
 
 //Code van Quinn
-[Actor] -> [<actor id=player>Player] ->
+[Actor] -> [<actor id=playerB>Player] ->
 [Player Movement|
 [Physics| 
 [Forces] o-> [Velocity] o-> [Friction] 
