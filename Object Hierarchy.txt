@@ -54,7 +54,7 @@
 
 
 //Code van Quinn
-[Actor] -> [<actor id=player>Player] ->
+[Actor] -> [<actor id=playerb>Player] ->
 [Player Movement|
 [Physics| 
 [Forces] o-> [Velocity] o-> [Friction] 
