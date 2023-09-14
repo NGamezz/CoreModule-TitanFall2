@@ -1,0 +1,78 @@
+//code van Adam
+[<actor id=playerA>Attack;Player]
+
+//input
+[player]-[Input]
+
+[Input]-[Reload]
+[Input]-[Aim Down Sights]
+[Input]-[Movement]
+[Input]-[Atk]
+[Input]-[Switch Weapon]
+
+[Reload|
+///reloading
+[Reload]-[More bullets]
+]
+[Aim Down Sights|
+//ADS
+[Aim Down Sights]->[Zoom View]->[Enhanced accuracy]
+]
+[Atk|
+//attacking
+[Atk]->[Swing]
+[Atk]-[Ground Slam]
+[Atk]->[Shoot]
+] -> [Damage enemies]
+
+
+
+[Switch Weapon|
+//switching weapons
+[Switch Weapon]-[Pistol]-[Shoot]
+[Switch Weapon]-[RPG]-[Shoot]
+[Switch Weapon]-[Melee]-[Swing]
+] -> [Damage enemies]
+
+//movement
+[Movement|
+[Movement]-[Jump]
+
+//standing still
+[Movement]-[Standing Still]-[More Accuracy]
+
+//Running
+[Movement]-[Running]-[Place In WorldSpace]
+
+//Jumping
+[Jump]->[Ground Slam]
+[Jump]->[Less accuracy]
+[Ground Slam]->[Damage enemies]
+[Movement]<->[Rocket Jump] -> [Damage taken]
+[Rocket Jump] -> [Higher Jump]
+]
+
+
+//Code van Quinn
+[Actor] -> [<actor id=playerB>Player] ->
+[Player Movement|
+[Physics| 
+[Forces] o-> [Velocity] o-> [Friction] 
+[Forces] -> [Gravity] o-> [Friction]
+]
+
+[Player Input|
+
+[Grenade] o-> [Knockback] o-> [Velocity Increase]
+[Interact] o-> [Zipline] o-> [Velocity Increase]
+
+[Input] o-> [Move] o-> [Sprint] o-> [Wall Run] o-> [Velocity Increase]
+[Input] o-> [Grapple] o-> [Velocity Increase]
+[Input] o-> [Slide] o-> [Velocity Increase]
+[Input] o-> [Jump] o-> [Double Jump]
+[Jump] o-> [Wall Run]
+[Double Jump] o-> [Wall Run] o-> [Wall Bounce] o-> [Velocity Increase]
+[Input] -> [No Input] -> [Velocity Build-up Loss]
+
+]
+]
