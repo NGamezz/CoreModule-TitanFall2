@@ -54,7 +54,7 @@
 
 
 //Code van Quinn
-[Actor] -> [<actor id=playerB>Player] ->
+[Actor] -> [<actor id=player>Player] ->
 [Player Movement|
 [Physics| 
 [Forces] o-> [Velocity] o-> [Friction] 
@@ -64,15 +64,18 @@
 [Player Input|
 
 [Grenade] o-> [Knockback] o-> [Velocity Increase]
-[Interact] o-> [Zipline] o-> [Velocity Increase]
+[Interact] o-> [Zipline] o-> [Velocity Build-up Loss]
 
 [Input] o-> [Move] o-> [Sprint] o-> [Wall Run] o-> [Velocity Increase]
 [Input] o-> [Grapple] o-> [Velocity Increase]
 [Input] o-> [Slide] o-> [Velocity Increase]
 [Input] o-> [Jump] o-> [Double Jump]
-[Jump] o-> [Wall Run]
-[Double Jump] o-> [Wall Run] o-> [Wall Bounce] o-> [Velocity Increase]
 [Input] -> [No Input] -> [Velocity Build-up Loss]
+
+[Jump] o-> [Wall Run]
+[Jump] o-> [Wall Bounce]
+
+[Double Jump] o-> [Wall Run] o-> [Wall Bounce] o-> [Velocity Increase]
 
 ]
 ]
